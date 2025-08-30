@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>My Interactive Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    #map {
+      height: 100vh; /* full screen map */
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Initialize map
+    var map = L.map('map').setView([20, 0], 2); // World view
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Example marker with popup
+    L.marker([34.0522, -118.2437]).addTo(map)
+      .bindPopup("<b>Los Angeles</b><br>Click <a href='https://example.com/article1' target='_blank'>here</a> to read article.")
+      .openPopup();
+
+    L.marker([48.8566, 2.3522]).addTo(map)
+      .bindPopup("<b>Paris</b><br>See the <a href='https://example.com/article2' target='_blank'>article</a>.");
+  </script>
+</body>
+</html>
